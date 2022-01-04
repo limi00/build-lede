@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt
+name: Build Mi R3G OpenWrt
 
 on:
   repository_dispatch:
@@ -14,7 +14,7 @@ on:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
-        required: true
+        required: false
         default: 'false'
         
 env:
