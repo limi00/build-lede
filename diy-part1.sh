@@ -13,6 +13,9 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
+# 替换更新adguardhome
+rm -rf package/diy/luci-app-adguardhome && git clone https://github.com/limi00/luci-app-adguardhome.git package/diy/luci-app-adguardhome
+
 # Add a feed source
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 # sed -i '$a src-git project https://github.com/project-openwrt/openwrt' feeds.conf.default
@@ -32,6 +35,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/diy/luci-app
 git clone https://github.com/rufengsuixing/luci-app-usb3disable.git package/diy/luci-app-usb3disable
 # git clone https://github.com/sirpdboy/netspeedtest.git package/diy/luci-app-netspeedtest
 git clone https://github.com/sirpdboy/luci-app-autotimeset.git package/diy/luci-app-autotimeset
+git clone https://github.com/zzsj0928/luci-app-pushbot package/diy/luci-app-pushbot
 # git clone https://github.com/linkease/istore.git package/diy/luci-app-store
 # git clone https://github.com/tty228/luci-app-serverchan.git package/mine/luci-app-serverchan
 
