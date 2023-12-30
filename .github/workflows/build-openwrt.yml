@@ -60,6 +60,9 @@ jobs:
         svn export https://github.com/sbwml/luci-app-alist/trunk/alist package/alist
        
         echo "src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git" >> ./feeds.conf.default
+
+        rm -rf feeds/kiddin9/openwrt-packages/luci-app-alist
+             
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
