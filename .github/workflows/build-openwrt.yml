@@ -56,7 +56,9 @@ jobs:
     - name: 配置 Feeds
       run: |
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
-        cd openwrt
+        cd openwrt  
+        rm -rf luci-theme-argon  
+        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
         echo "src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git" >> ./feeds.conf.default            
         ./scripts/feeds update -a
         ./scripts/feeds install -a
