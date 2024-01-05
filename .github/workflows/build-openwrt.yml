@@ -62,8 +62,9 @@ jobs:
         #echo "src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git" >> ./feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        rm -rf feeds/kenzo/luci-theme-argon
+        #rm -rf feeds/kenzo/luci-theme-argon
         rm -rf package/lean/luci-theme-argon
+        find ./ -name luci-theme-argon | xargs rm -rf
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
         sed -i 's/luci-theme-bootstrap/luci-theme-argon/' feeds/luci/collections/luci/Makefile
         rm -rf feeds/luci/applications/luci-app-alist
