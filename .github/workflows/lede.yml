@@ -1,4 +1,4 @@
-name: Lede
+name: lede
 
 on:
   repository_dispatch:
