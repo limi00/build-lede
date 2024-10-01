@@ -57,13 +57,17 @@ jobs:
       run: |
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
         cd openwrt
-        #echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
-        #echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
-        echo "src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git" >> ./feeds.conf.default
+        sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+        sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         #rm -rf feeds/kenzo/luci-theme-argon
         rm -rf package/lean/luci-theme-argon
+        ./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
+        rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+        rm -rf feeds/packages/utils/v2dat
+        rm -rf feeds/packages/lang/golang
+        git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
         find ./ -name luci-theme-argon | xargs rm -rf
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
         sed -i 's/luci-theme-bootstrap/luci-theme-argon/' feeds/luci/collections/luci/Makefile
